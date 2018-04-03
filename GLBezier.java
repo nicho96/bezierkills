@@ -10,10 +10,10 @@ final public class GLBezier {
 		float[] mesh1 = getFlatMesh();
 		
 		//First row of points
-		addPoint(mesh1, 0, 1, 0, 2, -1);
+		addPoint(mesh1, 0, 1, -2, 2, -1);
 		addPoint(mesh1, 1, 1, 0, 2, -1);
 		addPoint(mesh1, 2, 1, 0, 2, -1);
-		addPoint(mesh1, 3, 1, 0, 2, -1);
+		addPoint(mesh1, 3, 1, 2, 2, -1);
 		
 		//Second row of points
 		addPoint(mesh1, 0, 3, 0, 5f, 2);
@@ -26,8 +26,6 @@ final public class GLBezier {
 		addPoint(mesh1, 1, 3, 0, 10, 0);
 		addPoint(mesh1, 2, 3, 0, 10, 0);
 		addPoint(mesh1, 3, 3, 0, 10, 0);
-		
-		
 		
 		gl.glColor3f(1, 0, 0);
 		drawBezierPatch(gl, mesh1, true);
@@ -60,17 +58,6 @@ final public class GLBezier {
 	    
 	}
 	
-	public void draw_surface(GL2 gl, float[] ctrlpoints, int uorder, int vorder, boolean showGrid){
-		 
-		 //gl.glMap2f(GL2.GL_MAP2_VERTEX_3,0.0f,1.0f,3,4,0.0f,1.0f,12,4,ctrlpoints,0);
-		 gl.glMap2f(GL2.GL_MAP2_VERTEX_3,0.0f,1.0f,3,uorder,0.0f,1.0f,3*uorder,vorder,ctrlpoints,0);
-		 gl.glMapGrid2f(20,0.0f,1.0f,20,0.0f, 1.0f);
-		 if(showGrid)
-		     gl.glEvalMesh2(GL2.GL_LINE, 0, 20, 0, 20);
-		 else
-		     gl.glEvalMesh2(GL2.GL_FILL, 0, 20, 0, 20);
-			 //gl.glEvalMesh1(GL2.GL_FILL, 0, 20);
-	}
 	
 	public static void drawBezierPatch(GL2 gl, float[] points, boolean grid){
 		gl.glMap2f(GL2.GL_MAP2_VERTEX_3, 0.0f, 1.0f, 3, 4, 0.0f, 1.0f, 12, 4, points, 0);
